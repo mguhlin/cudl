@@ -7,7 +7,7 @@
     <style>
         :root {
             --primary: #2c3e50;
-            --accent: #e67e22;
+            --accent: #27ae60; /* Updated to a commit-friendly green */
             --light: #f4f7f6;
             --white: #ffffff;
         }
@@ -27,26 +27,26 @@
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-        h1 { text-align: center; color: var(--primary); margin-bottom: 30px; }
+        h1 { text-align: center; color: var(--primary); margin-bottom: 10px; }
         h2 { border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-top: 40px; }
         
         .protocol-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             margin-bottom: 40px;
         }
-        .viva-card {
-            background: #fdf2e9;
+        .arc-card {
+            background: #eafaf1;
             padding: 15px;
             border-left: 5px solid var(--accent);
             border-radius: 4px;
         }
-        .viva-card strong { display: block; font-size: 1.2em; color: var(--accent); }
+        .arc-card strong { display: block; font-size: 1.2em; color: var(--accent); }
 
         #scenario-box {
-            background: #ebf5fb;
-            border: 2px dashed #3498db;
+            background: #fdfefe;
+            border: 2px solid #bdc3c7;
             padding: 30px;
             margin: 30px 0;
             border-radius: 8px;
@@ -54,23 +54,24 @@
         }
         .btn-container { text-align: center; }
         button {
-            background-color: var(--accent);
+            background-color: var(--primary);
             color: white;
             border: none;
-            padding: 15px 30px;
+            padding: 15px 35px;
             font-size: 1.1em;
-            border-radius: 50px;
+            border-radius: 4px;
             cursor: pointer;
-            transition: transform 0.2s, background 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.2s;
         }
-        button:hover { background-color: #d35400; transform: scale(1.05); }
+        button:hover { background-color: #34495e; }
         .udl-ref {
             font-size: 0.9em;
-            background: #eee;
-            padding: 10px;
-            margin-top: 15px;
-            border-radius: 4px;
-            font-style: italic;
+            background: #f8f9f9;
+            padding: 12px;
+            margin-top: 20px;
+            border-left: 3px solid #3498db;
         }
     </style>
 </head>
@@ -78,31 +79,40 @@
 
 <div class="container">
     <h1>TCEA26 Coaching for Every Learner</h1>
-<center><img src="wwyd.png" alt="What Would You Do? image" style="width:200px;height:200px;"></center>
-    <h2>The VIVA Protocol Summary</h2>
+    <center><img src="wwyd.png" alt="What Would You Do? image" style="width:200px;height:200px;"></center>
+
+    <h2>The ARC Coaching Protocol</h2>
     <div class="protocol-grid">
-        <div class="viva-card"><strong>Verify</strong>Identify design barriers, not student deficits[cite: 6].</div>
-        <div class="viva-card"><strong>Illustrate</strong>Model a UDL option or flexible strategy[cite: 7].</div>
-        <div class="viva-card"><strong>Validate</strong>Confirm with data, research, or logic[cite: 7].</div>
-        <div class="viva-card"><strong>Apply</strong>Implement a small, practical next step[cite: 7].</div>
+        <div class="arc-card">
+            <strong>Acknowledge</strong>
+            Validate the teacher's current reality or frustration without judgment[cite: 24, 26]. Focus on the barrier, not a student deficit.
+        </div>
+        <div class="arc-card">
+            <strong>Reframe</strong>
+            Shift the perspective toward UDL principles[cite: 27]. Separate the instructional goal from the means of achieving it[cite: 37, 72].
+        </div>
+        <div class="arc-card">
+            <strong>Commit</strong>
+            Agree on a small, actionable next step to test a flexible strategy in the classroom[cite: 29, 37].
+        </div>
     </div>
 
     <hr>
 
     <div class="btn-container">
-        <button onclick="showRandomScenario()">SHOW RANDOM SCENARIO</button>
+        <button onclick="showRandomScenario()">Show Random Scenario</button>
     </div>
 
     <div id="scenario-box">
-        <p style="text-align: center; color: #7f8c8d;">Click the button above to load a coaching scenario.</p>
+        <p style="text-align: center; color: #7f8c8d;">Select the button to begin the ARC coaching cycle.</p>
     </div>
 
-    <h2>UDL Element Quick Reference</h2>
-    <p>Based on <strong>CAST UDL Guidelines 3.0</strong>, effective design provides multiple means of:</p>
+    <h2>UDL 3.0 Element Reference</h2>
+    <p>Use these elements to <strong>Reframe</strong> the instructional challenge[cite: 139, 140]:</p>
     <ul>
-        <li><strong>Engagement:</strong> The "Why" of learning. Includes optimizing choice, relevance, and authenticity[cite: 70].</li>
-        <li><strong>Representation:</strong> The "What" of learning. Includes clarifying vocabulary and using multiple media[cite: 71].</li>
-        <li><strong>Action & Expression:</strong> The "How" of learning. Includes using assistive technologies and multiple tools for construction[cite: 71, 72].</li>
+        <li><strong>Engagement:</strong> Welcoming Interests & Identities (7), Sustaining Effort (8), and Emotional Capacity (9)[cite: 147, 160, 180].</li>
+        <li><strong>Representation:</strong> Options for Perception (1), Language & Symbols (2), and Building Knowledge (3)[cite: 152, 167, 186].</li>
+        <li><strong>Action & Expression:</strong> Options for Interaction (4), Expression & Communication (5), and Strategy Development (6)[cite: 156, 173, 192].</li>
     </ul>
 </div>
 
@@ -110,45 +120,46 @@
     const scenarios = [
         {
             id: 1, title: "The 'Fairness' Dilemma", 
-            situation: "4th-grade teacher refuses speech-to-text for a student with dysgraphia, calling it 'cheating'[cite: 10].",
-            udl: "Action & Expression: Firm Goals, Flexible Means [cite: 10]",
-            moves: "Verify: Is the goal handwriting or storytelling? Apply: Trial tool for one assignment[cite: 10]."
+            situation: "A teacher refuses speech-to-text, saying 'It's not fair to the kids who have to write by hand.' ",
+            udl: "Action & Expression: Firm Goals, Flexible Means [cite: 37, 145]",
+            arc: "<strong>Acknowledge:</strong> The desire for all students to work hard. <br><strong>Reframe:</strong> Distinguish if the goal is 'handwriting' or 'composition'. <br><strong>Commit:</strong> Trial a tool for one assignment to compare quality. "
         },
         {
-            id: 4, title: "The 'Overwhelmed' Designer", 
-            situation: "Teacher is burnt out trying to write 30 different lesson plans for every individual student[cite: 19].",
-            udl: "Proactive Design: Design for the Edges [cite: 19]",
-            moves: "Verify: UDL is Universal, not Individualized. Illustrate: The 'Buffet' analogy[cite: 19]."
+            id: 6, title: "The 'Textbook' Reliance", 
+            situation: "Teacher relies only on the textbook; students with reading gaps are failing. [cite: 62]",
+            udl: "Representation: Options for Perception [cite: 62, 152]",
+            arc: "<strong>Acknowledge:</strong> The efficiency of following the curriculum standards. <br><strong>Reframe:</strong> View text as a barrier to decoding, not a measure of intelligence. <br><strong>Commit:</strong> Digitize one chapter and enable accessibility tools. [cite: 62]"
         },
         {
-            id: 10, title: "The 'Motivation' Myth", 
-            situation: "Teacher claims kids 'just don't care' about Algebra and cannot be made to learn[cite: 37].",
-            udl: "Engagement: Optimize Relevance & Authenticity [cite: 37]",
-            moves: "Validate: Relevance is the gateway to engagement. Apply: Start next unit with a 'Real World Problem'[cite: 37]."
+            id: 8, title: "The 'Assessment' Rigidity", 
+            situation: "Teacher insists on a 5-paragraph essay to prove students know a novel. [cite: 72]",
+            udl: "Action & Expression: Multiple Tools for Construction [cite: 72, 175]",
+            arc: "<strong>Acknowledge:</strong> The importance of teaching students how to write. <br><strong>Reframe:</strong> Explore if the goal is 'essay writing' or 'novel analysis'. <br><strong>Commit:</strong> Allow choice (Podcast, Debate) for the draft stage. [cite: 72]"
         },
         {
-            id: 14, title: "The 'Tech' Resistance", 
-            situation: "Teacher bans phones/laptops because students 'just play games,' missing accessibility tools[cite: 49].",
-            udl: "Action & Expression: Use Assistive Technologies [cite: 49]",
-            moves: "Verify: Is the device the enemy, or the lack of task? Apply: Specific 'Tech-On' moments[cite: 49]."
+            id: 11, title: "The 'Time' Constraint", 
+            situation: "Teacher agrees with UDL but says they have no time to offer choices. [cite: 87]",
+            udl: "Proactive Design: Minimize Threats [cite: 87, 194]",
+            arc: "<strong>Acknowledge:</strong> The pressure of covering the full curriculum. <br><strong>Reframe:</strong> Remind that reteaching often takes longer than designing for choice. <br><strong>Commit:</strong> Offer two choices for the final product. [cite: 87]"
         },
         {
-            id: 19, title: "The 'Executive Function' Fail", 
-            situation: "Students procrastinate on a 3-week project. Teacher says they need to learn 'responsibility'[cite: 64].",
-            udl: "Action & Expression: Support Planning & Strategy Development [cite: 64]",
-            moves: "Validate: EF is a developing skill (Prefrontal Cortex). Apply: Break project into 3 checkpoints[cite: 64]."
+            id: 20, title: "The 'Cultural' Disconnect", 
+            situation: "Teacher uses texts that don't reflect the student body, citing 'Shakespeare is universal.' [cite: 132]",
+            udl: "Engagement: Optimize Relevance & Value [cite: 132, 149]",
+            arc: "<strong>Acknowledge:</strong> The classic value of canonical literature. <br><strong>Reframe:</strong> Consider if the content acts as a 'mirror' or a 'wall'. <br><strong>Commit:</strong> Pair a classic text with a modern, diverse story of conflict. [cite: 132]"
         }
-        // Add additional scenarios from the PDF content here
     ];
 
     function showRandomScenario() {
         const scenario = scenarios[Math.floor(Math.random() * scenarios.length)];
         const box = document.getElementById('scenario-box');
         box.innerHTML = `
-            <h3>Scenario #${scenario.id}: ${scenario.title}</h3>
+            <h3 style="margin-top:0;">Scenario #${scenario.id}: ${scenario.title}</h3>
             <p><strong>The Situation:</strong> ${scenario.situation}</p>
-            <p><strong>VIVA Moves:</strong> ${scenario.moves}</p>
-            <div class="udl-ref"><strong>UDL Component:</strong> ${scenario.udl}</div>
+            <div style="background: white; padding: 15px; border: 1px solid #ddd; border-radius: 4px;">
+                ${scenario.arc}
+            </div>
+            <div class="udl-ref"><strong>UDL Alignment:</strong> ${scenario.udl}</div>
         `;
     }
 </script>
